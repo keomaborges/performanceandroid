@@ -38,10 +38,7 @@ namespace App1
             return TABELA;
         }
 
-        public CriaBanco(Context context)
-        {
-            base(context, NOME_BANCO, null, VERSAO);
-        }
+        public CriaBanco(Context context) : base(context, NOME_BANCO, null, VERSAO) { }
 
         public void onCreate(SQLiteDatabase db)
         {
@@ -55,18 +52,18 @@ namespace App1
 
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
         {
-            db.execSQL("DROP TABLE IF EXISTS" + TABELA);
+            db.ExecSQL("DROP TABLE IF EXISTS" + TABELA);
             onCreate(db);
         }
 
         public override void OnCreate(SQLiteDatabase db)
         {
-            throw new NotImplementedException();
+            
         }
 
         public override void OnUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

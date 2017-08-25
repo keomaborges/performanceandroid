@@ -1,1 +1,1 @@
-<resources><string name="Hello">Hello World, Click Me!</string><string name="ApplicationName">App1</string></resources>
+<resources><string name="Hello">Hello World, Click Me!</string><string name="ApplicationName">TCC</string><string name="pause">Obtendo localização...</string><string name="executando">Localização obtida. Executando teste de performance...</string><string name="resume">Executar</string><string name="hello_world">Hello world!</string><string name="action_settings">Settings</string></resources>

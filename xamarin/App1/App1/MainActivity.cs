@@ -24,6 +24,8 @@ namespace App1
         private static string COORD_COLUMN_LAT = "lat";
         private static string COORD_COLUMN_LON = "lon";
 
+        public object R { get; private set; }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -33,9 +35,8 @@ namespace App1
 
             // Get our button from the layout resource,
             // and attach an event to it
-            //Button button = FindViewById<Button>(Resource.Id.MyButton);
-
-            //button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
+            Button button = FindViewById<Button>(Resource.Id.botao);
+            button.Click += delegate { toggleGPSUpdates(button); };
             locationManager = (LocationManager)GetSystemService(Context.LocationService);
         }
 
@@ -58,7 +59,7 @@ namespace App1
             return locationManager.IsProviderEnabled(LocationManager.GpsProvider) || locationManager.IsProviderEnabled(LocationManager.NetworkProvider);
         }
 
-        public void onLocationChanged(Location location)
+        public void OnLocationChanged(Location location)
         {
             var sw = Stopwatch.StartNew();
             long tStart = sw.ElapsedMilliseconds;
@@ -68,15 +69,15 @@ namespace App1
 
             //Toast.makeText(getApplicationContext(), "Localização Obtida. Iniciando inserção no banco de dados...", Toast.LENGTH_LONG).show();
 
-            BancoController crud = new BancoController(getBaseContext());
-            string latString = string.valueOf(lat);
-            string lonString = string.valueOf(lon);
+            BancoController crud = new BancoController(Application.Context);
+            string latString = lat;
+            string lonString = lon;
 
             for (int x = 0; x < 1000; x++)
             {
                 if (!crud.insereDado(latString, lonString))
                 {
-                    Toast.makeText(getApplicationContext(), "Erro ao inserir coordenadas do BD. Iteração: " + x, Toast.LENGTH_LONG).show();
+                    Toast.MakeText(this, "Erro ao inserir coordenadas do BD. Iteração: " + x, ToastLength.Long).Show();
                 }
             }
 
@@ -84,30 +85,41 @@ namespace App1
             long tDelta = tEnd - tStart;
             double tempoDecorrido = tDelta / 1000.0;
 
-            Toast.makeText(getApplicationContext(), "Dados inseridos com sucesso!", Toast.LENGTH_LONG).show();
+            Toast.MakeText(this, "Dados inseridos com sucesso!", ToastLength.Long).Show();
 
-            TextView txtTempo = (TextView)findViewById(R.id.tempo);
-            Button botao = (Button)findViewById(R.id.botao);
-            txtTempo.setText(String.valueOf(tempoDecorrido));
-            botao.setText(R.string.resume);
+            TextView txtTempo = FindViewById<TextView>(Resource.Id.tempo);
+            Button botao = FindViewById<Button>(Resource.Id.botao);
+            txtTempo.Text = tempoDecorrido.ToString();
+            botao.SetText(Resource.String.resume);
         }
 
-        @Override
-    public void onStatusChanged(String s, int i, Bundle bundle)
+        public void OnProviderDisabled(string provider)
         {
-
+            
         }
 
-        @Override
-    public void onProviderEnabled(String s)
+        public void OnProviderEnabled(string provider)
         {
-
+            
         }
 
-        @Override
-    public void onProviderDisabled(String s)
+        public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
         {
+            
+        }
 
+        public void toggleGPSUpdates(Button button)
+        {
+            new AlertDialog.Builder(this)
+                .SetTitle("Aviso")
+                .SetMessage("Agora tentarei obter sua localização pelo GPS do celular. Isso pode demorar alguns segundos que não serão contabilizados no tempo de performance.")
+                .SetCancelable(false)
+                .SetPositiveButton("Entendido. Continue", delegate {})
+                .Show();
+
+            locationManager.RemoveUpdates(this);
+            locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 1, 1, this);
+            button.SetText(Resource.String.pause);
         }
     };
 }

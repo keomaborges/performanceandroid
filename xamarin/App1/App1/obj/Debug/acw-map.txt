@@ -1,3 +1,7 @@
+App1.CriaBanco, App1;md5579855c995bdb073d8182511e793544c.CriaBanco
+App1.CriaBanco, App1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5579855c995bdb073d8182511e793544c.CriaBanco
+App1.CriaBanco;md5579855c995bdb073d8182511e793544c.CriaBanco
+app1.CriaBanco;md5579855c995bdb073d8182511e793544c.CriaBanco
 App1.MainActivity, App1;md5579855c995bdb073d8182511e793544c.MainActivity
 App1.MainActivity, App1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5579855c995bdb073d8182511e793544c.MainActivity
 App1.MainActivity;md5579855c995bdb073d8182511e793544c.MainActivity

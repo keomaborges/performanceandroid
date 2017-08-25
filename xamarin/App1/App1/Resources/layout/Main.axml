@@ -9,5 +9,18 @@
         android:id="@+id/botao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Executar" />
+        android:text="Executar"
+        android:onClick="toggleGPSUpdates" />
+    <TextView
+        android:text="Tempo gasto:"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView1" />
+    <TextView
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tempo" />
 </LinearLayout>

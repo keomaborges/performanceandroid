@@ -63,6 +63,12 @@ namespace App1
 			// aapt resource value: 0x7f050000
 			public const int botao = 2131034112;
 			
+			// aapt resource value: 0x7f050002
+			public const int tempo = 2131034114;
+			
+			// aapt resource value: 0x7f050001
+			public const int textView1 = 2131034113;
+			
 			static Id()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -97,6 +103,21 @@ namespace App1
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
+			
+			// aapt resource value: 0x7f040006
+			public const int action_settings = 2130968582;
+			
+			// aapt resource value: 0x7f040003
+			public const int executando = 2130968579;
+			
+			// aapt resource value: 0x7f040005
+			public const int hello_world = 2130968581;
+			
+			// aapt resource value: 0x7f040002
+			public const int pause = 2130968578;
+			
+			// aapt resource value: 0x7f040004
+			public const int resume = 2130968580;
 			
 			static String()
 			{

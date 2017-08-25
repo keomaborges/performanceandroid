@@ -15,6 +15,8 @@ public final class R {
     }
     public static final class id {
         public static final int botao=0x7f050000;
+        public static final int tempo=0x7f050002;
+        public static final int textView1=0x7f050001;
     }
     public static final class layout {
         public static final int main=0x7f030000;
@@ -22,5 +24,10 @@ public final class R {
     public static final class string {
         public static final int ApplicationName=0x7f040001;
         public static final int Hello=0x7f040000;
+        public static final int action_settings=0x7f040006;
+        public static final int executando=0x7f040003;
+        public static final int hello_world=0x7f040005;
+        public static final int pause=0x7f040002;
+        public static final int resume=0x7f040004;
     }
 }
